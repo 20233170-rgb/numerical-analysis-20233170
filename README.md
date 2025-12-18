@@ -7,6 +7,7 @@
 
 ---
 
+
 ● 프로젝트 개요
 
 이 프로젝트는 수질 데이터셋을 기반으로 머신러닝 기법을 활용하여 식수 적합성(Potability)을 판별하고, 나아가 수학적 모델링(미분방정식)을 결합하여 오염 수준에 따른 '섭취 가능 골든타임(Safe Consumption Window)'을 예측하는 것을 목표로 한다.
@@ -14,13 +15,22 @@
 단순한 데이터 분류를 넘어, 실제 환경(정수기, 수돗물, 하천)을 가정한 시나리오 테스트를 통해 실생활에 적용 가능한 안전 가이드라인을 제시한다.
 
 
+● 실행 방법
 
-● 데이터 출처
+1) 라이브러리 설치
+pip install pandas numpy matplotlib seaborn sklearn
 
-출처: Kaggle Water Potability Dataset
-데이터 종류: 유기탄소(Organic Carbon), 탁도(Turbidity), 식수 적합 여부(Potability) 등
-파일명: water_potability.csv → (전처리 후) water_potability_processed.csv
+2) 파일 준비
+이 저장소(Repository)의 water_potability.csv와 .ipynb 파일을 다운로드
+또는 Google Colab에서 해당 파일을 업로드하여 준비
 
+3) 코드 실행
+- 데이터 로드 및 전처리: 데이터 정제 및 특징 선택
+- K-Means 수행: 안전/위험 군집 분류 및 시각화
+- 시뮬레이션: 시간 경과에 따른 세균 증식 그래프 출력
+- 결과 확인: 최종 시나리오별 Risk/Safe 판별 결과 출력
+
+ 
 
 
 ● 전처리 과정 요약
@@ -57,20 +67,6 @@ Malthusian Growth Model (N(t) = N0 * e^(kt)) 적용
 
 
 
-● 실행 방법
-
-1) 라이브러리 설치
-pip install pandas numpy matplotlib seaborn sklearn
-
-2) 파일 준비
-이 저장소(Repository)의 water_potability.csv와 .ipynb 파일을 다운로드
-또는 Google Colab에서 해당 파일을 업로드하여 준비
-
-3) 코드 실행
-- 데이터 로드 및 전처리: 데이터 정제 및 특징 선택
-- K-Means 수행: 안전/위험 군집 분류 및 시각화
-- 시뮬레이션: 시간 경과에 따른 세균 증식 그래프 출력
-- 결과 확인: 최종 시나리오별 Risk/Safe 판별 결과 출력
 
 
 
@@ -81,3 +77,11 @@ pip install pandas numpy matplotlib seaborn sklearn
 - 깨끗한 물(Clean Group)은 장시간 방치해도 세균 증식이 억제됨.
 - 오염된 물(Dirty Group)은 초기 세균 수(N0)가 높고 증식 속도(k)가 빨라 단시간 내 위험 수치 도달.
 결론: 탁도(Turbidity) 관리가 초기 세균 오염을 막는 핵심이며, 유기물(Organic Carbon) 관리는 증식 속도를 늦추는 데 중요함.
+
+
+
+● 데이터 출처
+
+출처: Kaggle Water Potability Dataset (Aditya Kadiwal via Kaggle)
+데이터 종류: 유기탄소(Organic Carbon), 탁도(Turbidity), 식수 적합 여부(Potability) 등
+파일명: water_potability.csv → (전처리 후) water_potability_processed.csv
